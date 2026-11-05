@@ -1,40 +1,56 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp">
+<html lang="en" ng-app="StudentApp">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>First Angular project</title>
-     <script src="node_modules/angular/angular.js"></script>
-     <script src="app.js"></script>
+    <title>Student Management</title>
 
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="app.js"></script>
 </head>
-<body>
-<div ng-controller="collegeController">
-    <h2>welcome to {{collegename}}</h2>
-    <hr>
-    <div ng-controller="studentController">
-        <h2>student registration</h2>
-        <label>student name:</label>
-        <input type="text " ng-model="name">
-        <br><br>
-        <label>department:</label>
-        <input type="text" ng-model="department">
-        <br><br>
-        <label>semester:</label>
-        <input type="text" ng-model="semester">
-        <hr>
-        <h3>student details</h3>
-        <p>name: {{studentname}}</p>
-        <p>department: {{department}}</p>
-        <p>semester: {{semester}}</p>
-        <h2>student list</h2>
-        <ul>
-            <li ng-repeat="student in students">
-                {{student}}
-            </li>
-        </ul>
 
-    </div>
+<body ng-controller="StudentController">
+
+    <h1>Student Management</h1>
+
+    <form ng-submit="saveStudent()">
+        <input type="text" ng-model="student.name"
+               placeholder="Student Name" required>
+
+        <input type="text" ng-model="student.department"
+               placeholder="Department" required>
+
+        <button type="submit">
+            {{ student.id ? 'Update Student' : 'Add Student' }}
+        </button>
+
+        <button type="button" ng-click="cancelEdit()"
+                ng-if="student.id">
+            Cancel
+        </button>
+    </form>
+
+    <hr>
+
+    <h2>Student List</h2>
+
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Actions</th>
+        </tr>
+
+        <tr ng-repeat="s in students">
+            <td>{{ s.id }}</td>
+            <td>{{ s.name }}</td>
+            <td>{{ s.department }}</td>
+            <td>
+                <button ng-click="editStudent(s)">Edit</button>
+                <button ng-click="deleteStudent(s.id)">Delete</button>
+            </td>
+        </tr>
+    </table>
+
 </body>
-</div>
 </html>
