@@ -9,7 +9,7 @@ const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZ
 const hospitals = [
     { name: "City Care Hospital", location: "Bengaluru" },
     { name: "Apollo Hospital", location: "Bengaluru" },
-    { name: "Manipal Hospital", location: "Bengaluru" },
+    { name: "Manipal Hospital", location: "Bengaluru" }, 
     { name: "Fortis Hospital", location: "Bengaluru" },
     { name: "Narayana Health", location: "Bengaluru" },
     { name: "Aster CMI Hospital", location: "Bengaluru" },
